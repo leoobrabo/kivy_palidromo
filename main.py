@@ -15,6 +15,7 @@ MDBoxLayout:
     MDToolbar:
         title: "É Palindrome?"
         elevation: 8
+        right_action_items: [['lightbulb-outline', lambda x: app.color()]]
     ScreenManager:
         InicialScreen:
         PrincipalScreen:
@@ -121,8 +122,6 @@ MDBoxLayout:
     
 '''
 
-...
-
 
 class InicialScreen(MDScreen):
     pass
@@ -163,6 +162,13 @@ class PalidromeApp(MDApp):
         self.theme_cls.accent_palette = 'Blue'
         self.theme_cls.theme_style = 'Dark'
         return Builder.load_string(screen_helper)
+
+    def color(self):
+        style = self.theme_cls.theme_style
+        if style == 'Light':
+            self.theme_cls.theme_style = 'Dark'
+        else:
+            self.theme_cls.theme_style = 'Light'
 
 
 if __name__ == '__main__':
